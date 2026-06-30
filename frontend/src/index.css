@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* Tipografía global más fina y compacta (look 2027) */
+html {
+  font-size: 14.5px;
+}
+
+body {
+  @apply font-sans text-slate-600 antialiased;
+  background: radial-gradient(1200px 600px at 100% -10%, #eef2ff 0%, rgba(238, 242, 255, 0) 55%),
+    radial-gradient(900px 500px at -10% 110%, #f5f3ff 0%, rgba(245, 243, 255, 0) 50%), #f7f8fc;
+  letter-spacing: -0.01em;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8dbe6;
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c2c6d6;
+  background-clip: content-box;
+}
+
+/* Estilos de impresión: ticket térmico 80mm y padrón de matrícula a página completa */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #ticket-print,
+  #ticket-print *,
+  #matricula-print,
+  #matricula-print * {
+    visibility: visible;
+  }
+  #ticket-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+  }
+  #matricula-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,6 @@
+@Horacio.API_HostAddress = http://localhost:5289
+
+GET {{Horacio.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

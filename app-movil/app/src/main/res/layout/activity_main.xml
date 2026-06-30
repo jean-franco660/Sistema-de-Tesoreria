@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/night"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="18dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp">
+
+            <!-- Top bar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/btnMenu"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_menu"
+                    app:tint="@color/text_hi"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Menú" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtHola"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hola"
+                        android:textColor="@color/text_hi"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bienvenida"
+                        android:textColor="@color/text_mut"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/btnBell"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/circle_icon">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_bell"
+                        app:tint="@color/text_hi"
+                        android:contentDescription="Notificaciones" />
+
+                    <TextView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="top|end"
+                        android:background="@drawable/circle_grad"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/circle_grad">
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_user"
+                        app:tint="@color/white"
+                        android:contentDescription="Perfil" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Tarjeta total (degradé) -->
+            <LinearLayout
+                android:id="@+id/cardTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_total_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_comprobante"
+                        android:textColor="#D9DCFF"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txtTotalMonto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="S/ 0.00"
+                        android:textColor="@color/white"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtTotalProveedor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="—"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtTotalCategoria"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/chip_glass"
+                            android:text="—"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_marginStart="12dp"
+                            android:background="@drawable/dot_green" />
+
+                        <TextView
+                            android:id="@+id/txtTotalConfianza"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Confianza IA: —"
+                            android:textColor="#E4E6FF"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/circle_glass">
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_receipt"
+                        app:tint="@color/white"
+                        android:contentDescription="@null" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Acciones rápidas -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="@string/acciones_rapidas"
+                android:textColor="@color/text_hi"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <LinearLayout android:id="@+id/qaEscanear" style="@style/Tile" android:layout_marginEnd="6dp">
+                    <FrameLayout android:layout_width="42dp" android:layout_height="42dp" android:background="@drawable/circle_icon">
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_camera" app:tint="@color/violet_200" android:contentDescription="@null" />
+                    </FrameLayout>
+                    <TextView style="@style/TileTitle" android:text="@string/escanear" />
+                    <TextView style="@style/TileDesc" android:text="@string/escanear_desc" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/qaHistorial" style="@style/Tile" android:layout_marginStart="6dp">
+                    <FrameLayout android:layout_width="42dp" android:layout_height="42dp" android:background="@drawable/circle_icon">
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_clock" app:tint="@color/violet_200" android:contentDescription="@null" />
+                    </FrameLayout>
+                    <TextView style="@style/TileTitle" android:text="@string/historial" />
+                    <TextView style="@style/TileDesc" android:text="@string/historial_desc" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <LinearLayout android:id="@+id/qaCategorias" style="@style/Tile" android:layout_marginEnd="6dp">
+                    <FrameLayout android:layout_width="42dp" android:layout_height="42dp" android:background="@drawable/circle_icon">
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_pie" app:tint="@color/violet_200" android:contentDescription="@null" />
+                    </FrameLayout>
+                    <TextView style="@style/TileTitle" android:text="@string/categorias" />
+                    <TextView style="@style/TileDesc" android:text="@string/categorias_desc" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/qaReportes" style="@style/Tile" android:layout_marginStart="6dp">
+                    <FrameLayout android:layout_width="42dp" android:layout_height="42dp" android:background="@drawable/circle_icon">
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center" android:src="@drawable/ic_chart" app:tint="@color/violet_200" android:contentDescription="@null" />
+                    </FrameLayout>
+                    <TextView style="@style/TileTitle" android:text="@string/reportes" />
+                    <TextView style="@style/TileDesc" android:text="@string/reportes_desc" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Actividad reciente -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/actividad_reciente"
+                    android:textColor="@color/text_hi"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtVerTodo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="@string/ver_todo"
+                    android:textColor="@color/violet_200"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/containerReciente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/txtRecienteVacio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:padding="16dp"
+                android:background="@drawable/bg_tile"
+                android:gravity="center"
+                android:text="@string/sin_egresos"
+                android:textColor="@color/text_mut"
+                android:textSize="13sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom nav con FAB -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:background="@color/night_2"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="top"
+            android:background="@color/stroke" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <LinearLayout android:id="@+id/navInicio" style="@style/NavItem">
+                <ImageView style="@style/NavIcon" android:src="@drawable/ic_home" app:tint="@color/violet_200" android:contentDescription="@null" />
+                <TextView style="@style/NavLabel" android:text="@string/nav_inicio" android:textColor="@color/violet_200" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/navHistorial" style="@style/NavItem">
+                <ImageView style="@style/NavIcon" android:src="@drawable/ic_clock" app:tint="@color/text_dim" android:contentDescription="@null" />
+                <TextView style="@style/NavLabel" android:text="@string/nav_historial" />
+            </LinearLayout>
+
+            <View android:layout_width="72dp" android:layout_height="match_parent" />
+
+            <LinearLayout android:id="@+id/navReportes" style="@style/NavItem">
+                <ImageView style="@style/NavIcon" android:src="@drawable/ic_chart" app:tint="@color/text_dim" android:contentDescription="@null" />
+                <TextView style="@style/NavLabel" android:text="@string/reportes" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/navPerfil" style="@style/NavItem">
+                <ImageView style="@style/NavIcon" android:src="@drawable/ic_user" app:tint="@color/text_dim" android:contentDescription="@null" />
+                <TextView style="@style/NavLabel" android:text="@string/nav_perfil" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fabScan"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="26dp"
+            android:background="@drawable/circle_grad"
+            android:clickable="true"
+            android:focusable="true"
+            android:elevation="8dp">
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_scan"
+                app:tint="@color/white"
+                android:contentDescription="@string/escanear" />
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>

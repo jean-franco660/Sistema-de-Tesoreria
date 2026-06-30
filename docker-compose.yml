@@ -1,0 +1,70 @@
+name: horacio-tesoreria
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: horacio-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: horacio_tesoreria
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d horacio_tesoreria"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: src/Horacio.API/Dockerfile
+    container_name: horacio-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: "http://+:8080"
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=horacio_tesoreria;Username=postgres;Password=postgres"
+      Jwt__Key: "CLAVE_SECRETA_CAMBIAR_EN_PRODUCCION_min_32_chars_horacio_zeballos_2026"
+      Jwt__Issuer: "HoracioTesoreria"
+      Jwt__Audience: "HoracioTesoreriaClient"
+      Reniec__Provider: "Api"
+      # GRATIS (solo nombres): apis.net.pe v1. NO devuelve sexo ni fecha de nacimiento.
+      Reniec__BaseUrl: "https://api.apis.net.pe/v1/dni?numero={dni}"
+      Reniec__Token: ""
+      # ── Para obtener TAMBIÉN sexo y fecha de nacimiento se necesita un proveedor
+      #    RENIEC de PAGO con token (RENIEC cobra esos datos). El sistema ya los
+      #    parsea solo. Para activarlo, reemplaza las 2 líneas de arriba por uno de:
+      #
+      #    Factiliza:  Reniec__BaseUrl: "https://api.factiliza.com/v1/dni/info/{dni}"
+      #                Reniec__Token:   "TU_TOKEN_BEARER"
+      #
+      #    migo.pe:    Reniec__BaseUrl: "https://api.migo.pe/api/v1/dni"   (revisar formato)
+      #                Reniec__Token:   "TU_TOKEN"
+      #
+      #    apis.net.pe v2: Reniec__BaseUrl: "https://api.apis.net.pe/v2/reniec/dni?numero={dni}"
+      #                    Reniec__Token:   "TU_TOKEN"
+    ports:
+      - "5080:8080"
+
+  # ----------------------------------------------------------------------------
+  # Frontend (React) — se habilita en la FASE 8 (cuando exista ./frontend).
+  # Para activarlo: descomentar este bloque tras crear frontend/Dockerfile.
+  # ----------------------------------------------------------------------------
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   container_name: horacio-frontend
+  #   depends_on:
+  #     - api
+  #   ports:
+  #     - "5173:80"
+
+volumes:
+  postgres-data:

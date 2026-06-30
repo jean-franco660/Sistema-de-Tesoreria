@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+**/.vs/
+**/node_modules/
+**/dist/
+**/.vite/
+**/logs/
+**/*.user
+frontend/node_modules/
+frontend/dist/
+.git/
+.gitignore
+*.md

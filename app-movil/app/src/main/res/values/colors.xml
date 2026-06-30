@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fondos oscuros (dark premium) -->
+    <color name="night">#0A0A16</color>
+    <color name="night_2">#0E0E1E</color>
+    <color name="card">#16162C</color>
+    <color name="card_2">#1E1E38</color>
+    <color name="stroke">#2A2A48</color>
+
+    <!-- Texto -->
+    <color name="text_hi">#FFFFFF</color>
+    <color name="text_mut">#9AA0B8</color>
+    <color name="text_dim">#6E7390</color>
+
+    <!-- Acento / degradé -->
+    <color name="indigo">#6366F1</color>
+    <color name="indigo_600">#4F46E5</color>
+    <color name="violet">#8B5CF6</color>
+    <color name="violet_200">#C4B5FD</color>
+    <color name="grad_start">#4F6BF6</color>
+    <color name="grad_end">#8B5CF6</color>
+
+    <!-- Semánticos -->
+    <color name="emerald">#34D399</color>
+    <color name="emerald_bg">#16382B</color>
+    <color name="rose">#FB7185</color>
+    <color name="rose_bg">#2A1620</color>
+    <color name="rose_soft">#2A1620</color>
+    <color name="amber">#FBBF24</color>
+
+    <!-- Brand logos -->
+    <color name="g_blue">#4285F4</color>
+    <color name="g_red">#EA4335</color>
+    <color name="g_yellow">#FBBC05</color>
+    <color name="g_green">#34A853</color>
+    <color name="ms_red">#F25022</color>
+    <color name="ms_green">#7FBA00</color>
+    <color name="ms_blue">#00A4EF</color>
+    <color name="ms_yellow">#FFB900</color>
+
+    <!-- Comunes / aliases -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#0A0A16</color>
+    <color name="brand_900">#0A0A16</color>
+    <color name="brand_800">#14142A</color>
+    <color name="on_dark_muted">#9AA0B8</color>
+    <color name="ink">#FFFFFF</color>
+    <color name="slate">#9AA0B8</color>
+    <color name="bg">#0A0A16</color>
+    <color name="surface">#16162C</color>
+</resources>

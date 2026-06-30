@@ -1,0 +1,32 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+artifacts/
+
+# EF
+*.db
+*.db-shm
+*.db-wal
+
+# Node / frontend
+node_modules/
+dist/
+.vite/
+*.local
+
+# Env / secrets
+.env
+.env.*
+appsettings.*.Local.json
+*.pfx
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

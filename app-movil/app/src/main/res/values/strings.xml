@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Tesorería</string>
+    <string name="marca">Control de Egresos</string>
+
+    <!-- Login -->
+    <string name="hero_titulo">Control inteligente de tus egresos</string>
+    <string name="hero_sub">Escanea, lee y registra tus gastos de forma automática y segura</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="usuario">Usuario</string>
+    <string name="clave">Contraseña</string>
+    <string name="recordar">Recordar sesión</string>
+    <string name="olvidaste">¿Olvidaste tu contraseña?</string>
+    <string name="continua_con">o continúa con</string>
+    <string name="powered">OCR + IA · Lectura automática</string>
+
+    <!-- Home -->
+    <string name="hola">Hola</string>
+    <string name="bienvenida">Bienvenido de vuelta</string>
+    <string name="total_comprobante">Total del comprobante</string>
+    <string name="acciones_rapidas">Acciones rápidas</string>
+    <string name="escanear">Escanear comprobante</string>
+    <string name="escanear_desc">Toma una foto y extrae la información</string>
+    <string name="historial">Historial de gastos</string>
+    <string name="historial_desc">Consulta tus comprobantes</string>
+    <string name="categorias">Categorías</string>
+    <string name="categorias_desc">Gestiona tus categorías</string>
+    <string name="reportes">Reportes</string>
+    <string name="reportes_desc">Visualiza tus reportes</string>
+    <string name="actividad_reciente">Actividad reciente</string>
+    <string name="ver_todo">Ver todo</string>
+    <string name="sin_egresos">Aún no hay egresos. Escanea tu primer comprobante.</string>
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_historial">Historial</string>
+    <string name="nav_perfil">Perfil</string>
+
+    <!-- Cámara -->
+    <string name="tomar_foto">Capturar</string>
+    <string name="procesando">Leyendo el comprobante…</string>
+    <string name="encuadre">Encuadra el comprobante dentro del marco</string>
+
+    <!-- Detalle -->
+    <string name="detalle_titulo">Detalle del comprobante</string>
+    <string name="egreso_registrado">Egreso registrado</string>
+    <string name="egreso_ok">El comprobante se guardó correctamente</string>
+    <string name="detalle_extraido">Detalle extraído</string>
+    <string name="ver_comprobante">Ver comprobante</string>
+    <string name="otro">Escanear otro</string>
+    <string name="proximamente">Disponible próximamente</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+</resources>

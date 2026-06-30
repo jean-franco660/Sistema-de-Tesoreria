@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/bg_auth">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="36dp"
+        android:paddingBottom="26dp">
+
+        <!-- Marca -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/circle_icon">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_receipt"
+                    app:tint="@color/violet_200"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/app_name" android:textColor="@color/text_hi" android:textSize="19sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/marca" android:textColor="@color/text_mut" android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Hero -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="8dp">
+
+            <View
+                android:layout_width="220dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_glow" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="116dp"
+                android:layout_height="138dp"
+                android:layout_gravity="center"
+                android:rotation="-6"
+                app:cardBackgroundColor="#F5F5FF"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                    android:orientation="vertical" android:padding="12dp">
+                    <View android:layout_width="40dp" android:layout_height="6dp" android:background="@color/violet" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp" android:text="S/ 150.00" android:textColor="@color/night"
+                        android:textSize="18sp" android:textStyle="bold" />
+                    <View android:layout_width="match_parent" android:layout_height="5dp" android:layout_marginTop="14dp" android:background="#D7D7E6" />
+                    <View android:layout_width="64dp" android:layout_height="5dp" android:layout_marginTop="8dp" android:background="#E2E2EE" />
+                    <View android:layout_width="48dp" android:layout_height="5dp" android:layout_marginTop="8dp" android:background="#E2E2EE" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <FrameLayout
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="160dp"
+                android:rotation="10"
+                android:background="@drawable/bg_tile">
+                <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center"
+                    android:src="@drawable/ic_check_circle" app:tint="@color/emerald" android:contentDescription="@null" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="170dp"
+                android:layout_marginTop="60dp"
+                android:rotation="-12"
+                android:background="@drawable/bg_tile">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center"
+                    android:src="@drawable/ic_lock" app:tint="@color/violet_200" android:contentDescription="@null" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- Titular -->
+        <TextView
+            android:id="@+id/txtHeroTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/hero_titulo"
+            android:textColor="@color/text_hi"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="1.05" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/hero_sub"
+            android:textColor="@color/text_mut"
+            android:textSize="14sp" />
+
+        <!-- Tarjeta de login -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            app:cardBackgroundColor="@color/card"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/stroke"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/iniciar_sesion" android:textColor="@color/text_hi" android:textSize="18sp" android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:hint="@string/usuario"
+                    android:textColorHint="@color/text_dim"
+                    app:boxBackgroundColor="@color/card_2"
+                    app:boxStrokeColor="@color/stroke"
+                    app:hintTextColor="@color/text_mut"
+                    app:startIconDrawable="@drawable/ic_user"
+                    app:startIconTint="@color/text_mut"
+                    app:boxCornerRadiusBottomEnd="14dp" app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp" app:boxCornerRadiusTopStart="14dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputUsuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/text_hi"
+                        android:autofillHints="username" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="@string/clave"
+                    android:textColorHint="@color/text_dim"
+                    app:boxBackgroundColor="@color/card_2"
+                    app:boxStrokeColor="@color/stroke"
+                    app:hintTextColor="@color/text_mut"
+                    app:startIconDrawable="@drawable/ic_lock"
+                    app:startIconTint="@color/text_mut"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/text_mut"
+                    app:boxCornerRadiusBottomEnd="14dp" app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp" app:boxCornerRadiusTopStart="14dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputClave"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/text_hi"
+                        android:autofillHints="password" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/chkRecordar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/recordar"
+                        android:textColor="@color/text_mut"
+                        android:textSize="13sp"
+                        app:buttonTint="@color/indigo" />
+
+                    <TextView
+                        android:id="@+id/btnOlvidaste"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:padding="6dp"
+                        android:text="@string/olvidaste"
+                        android:textColor="@color/violet_200"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnIngresar"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_grad_button"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="@string/iniciar_sesion" android:textColor="@color/white" android:textSize="15sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="14dp"
+                    android:indeterminateTint="@color/violet"
+                    android:visibility="gone" />
+
+                <!-- Divisor -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" android:background="@color/stroke" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp" android:text="@string/continua_con" android:textColor="@color/text_dim" android:textSize="12sp" />
+                    <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" android:background="@color/stroke" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/btnGoogle"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/bg_tile"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <ImageView android:layout_width="22dp" android:layout_height="22dp" android:layout_gravity="center"
+                            android:src="@drawable/ic_google" android:contentDescription="Google" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/btnMicrosoft"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_tile"
+                        android:clickable="true"
+                        android:focusable="true">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center"
+                            android:src="@drawable/ic_microsoft" android:contentDescription="Microsoft" />
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/powered"
+            android:textColor="@color/text_dim"
+            android:textSize="12sp" />
+    </LinearLayout>
+</ScrollView>
