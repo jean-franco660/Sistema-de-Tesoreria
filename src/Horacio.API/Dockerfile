@@ -21,5 +21,4 @@ WORKDIR /app
 COPY --from=build /app/publish .
 
 EXPOSE 8080
-ENV ASPNETCORE_URLS=http://+:8080
-ENTRYPOINT ["dotnet", "Horacio.API.dll"]
+ENTRYPOINT ["sh", "-c", "dotnet Horacio.API.dll --urls \"http://+:${PORT:-8080}\""]
