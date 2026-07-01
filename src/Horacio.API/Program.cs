@@ -17,6 +17,29 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Parse PostgreSQL connection URI if provided (e.g. from Railway DATABASE_URL)
+var rawConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (!string.IsNullOrEmpty(rawConnectionString) && (rawConnectionString.StartsWith("postgres://") || rawConnectionString.StartsWith("postgresql://")))
+{
+    try
+    {
+        var uri = new Uri(rawConnectionString);
+        var userInfo = uri.UserInfo.Split(':');
+        var username = userInfo[0];
+        var password = userInfo.Length > 1 ? userInfo[1] : "";
+        var host = uri.Host;
+        var port = uri.Port > 0 ? uri.Port : 5432;
+        var database = uri.AbsolutePath.TrimStart('/');
+        
+        builder.Configuration["ConnectionStrings:DefaultConnection"] = 
+            $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true;";
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error parsing database connection URI: {ex.Message}");
+    }
+}
+
 // ----------------------------------------------------------------------------
 // Serilog
 // ----------------------------------------------------------------------------
