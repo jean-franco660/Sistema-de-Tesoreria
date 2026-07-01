@@ -90,7 +90,8 @@ public static class DbInitializer
                 new Contador { Nombre = "GENERAL", Serie = "000", UltimoValor = 0 },
                 new Contador { Nombre = "TICKET", Serie = "001", UltimoValor = 0 });
 
-        if (!await context.Usuarios.AnyAsync(u => u.Username.ToLower() == "admin", ct))
+        var adminUser = await context.Usuarios.FirstOrDefaultAsync(u => u.Username.ToLower() == "admin", ct);
+        if (adminUser == null)
         {
             context.Usuarios.Add(new Usuario
             {
@@ -100,6 +101,12 @@ public static class DbInitializer
                 Rol = RolUsuario.Administrador,
                 Estado = EstadoRegistro.Activo
             });
+        }
+        else
+        {
+            // Forzamos el reset de contraseña por si quedó con un hash inválido de despliegues previos
+            adminUser.PasswordHash = hasher.Hash("Admin123*");
+            adminUser.Estado = EstadoRegistro.Activo;
         }
 
         await context.SaveChangesAsync(ct);

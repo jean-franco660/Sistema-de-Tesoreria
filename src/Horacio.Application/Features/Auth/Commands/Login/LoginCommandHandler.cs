@@ -22,12 +22,23 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, AuthResponse>
 
     public async Task<AuthResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
+        Console.WriteLine($"[LOGIN DBG] Intentando login para usuario: '{request.Username}'");
+
         var usuario = await _uow.Repository<Usuario>()
             .FirstOrDefaultAsync(u => u.Username.ToLower() == request.Username.ToLower(), cancellationToken);
 
-        if (usuario is null
-            || usuario.Estado != EstadoRegistro.Activo
-            || !_hasher.Verify(request.Password, usuario.PasswordHash))
+        if (usuario is null)
+        {
+            Console.WriteLine($"[LOGIN DBG] Usuario '{request.Username}' no encontrado en la base de datos.");
+            throw new DomainException("Usuario o contraseña incorrectos.");
+        }
+
+        Console.WriteLine($"[LOGIN DBG] Usuario encontrado. Estado: {usuario.Estado}, Rol: {usuario.Rol}");
+        
+        bool passwordValido = _hasher.Verify(request.Password, usuario.PasswordHash);
+        Console.WriteLine($"[LOGIN DBG] Verificación de password: {passwordValido}");
+
+        if (usuario.Estado != EstadoRegistro.Activo || !passwordValido)
         {
             throw new DomainException("Usuario o contraseña incorrectos.");
         }
