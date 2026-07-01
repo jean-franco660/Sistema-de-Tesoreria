@@ -1,6 +1,8 @@
 using Horacio.Application.Common.Interfaces;
 using DomainConfig = Horacio.Domain.Entities.Configuracion;
+using Horacio.Domain.Entities;
 using MediatR;
+using System.Linq;
 
 namespace Horacio.Application.Features.Configuracion.Queries;
 
@@ -23,6 +25,11 @@ public class ConfiguracionDto
     public string NivelFormativo { get; set; } = string.Empty;
     public string TipoPlan { get; set; } = string.Empty;
     public string? LogoBase64 { get; set; }
+
+    // Campos de diagnóstico para la nube
+    public string DiagnosticSeedMessage { get; set; } = string.Empty;
+    public int DiagnosticTotalUsers { get; set; }
+    public string DiagnosticAdminDetails { get; set; } = string.Empty;
 }
 
 /// <summary>Obtiene la configuración institucional (única fila).</summary>
@@ -38,6 +45,34 @@ public class GetConfiguracionQueryHandler : IRequestHandler<GetConfiguracionQuer
     {
         var c = (await _uow.Repository<DomainConfig>().ListAllAsync(cancellationToken)).FirstOrDefault()
             ?? new DomainConfig();
+
+        int totalUsers = 0;
+        string adminDetails = "No encontrado";
+        
+        try
+        {
+            var usuarios = await _uow.Repository<Usuario>().ListAllAsync(cancellationToken);
+            totalUsers = usuarios.Count;
+            var admin = usuarios.FirstOrDefault(u => u.Username.ToLower() == "admin");
+            if (admin != null)
+            {
+                adminDetails = $"Encontrado - Estado: {admin.Estado}, Rol: {admin.Rol}, HashLength: {admin.PasswordHash?.Length}";
+            }
+        }
+        catch (Exception ex)
+        {
+            adminDetails = $"Error consultando usuarios: {ex.Message}";
+        }
+
+        string seedMsg = "";
+        try
+        {
+            seedMsg = Horacio.Persistence.Seed.DbInitializer.SeedStatusMessage;
+        }
+        catch (Exception ex)
+        {
+            seedMsg = $"No se pudo obtener el mensaje de seed: {ex.Message}";
+        }
 
         return new ConfiguracionDto
         {
@@ -57,7 +92,11 @@ public class GetConfiguracionQueryHandler : IRequestHandler<GetConfiguracionQuer
             ModalidadServicio = c.ModalidadServicio,
             NivelFormativo = c.NivelFormativo,
             TipoPlan = c.TipoPlan,
-            LogoBase64 = c.LogoBase64
+            LogoBase64 = c.LogoBase64,
+            
+            DiagnosticSeedMessage = seedMsg,
+            DiagnosticTotalUsers = totalUsers,
+            DiagnosticAdminDetails = adminDetails
         };
     }
 }

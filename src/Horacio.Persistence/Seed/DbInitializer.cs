@@ -11,6 +11,8 @@ namespace Horacio.Persistence.Seed;
 /// </summary>
 public static class DbInitializer
 {
+    public static string SeedStatusMessage { get; set; } = "No iniciado";
+
     private static readonly string[] ProgramasIniciales =
     {
         "SOPORTE TECNICO Y OPERACION DE CENTROS DE COMPUTO",

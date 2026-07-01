@@ -218,10 +218,12 @@ static async Task InicializarBaseDeDatosAsync(WebApplication app)
 
         var hasher = services.GetRequiredService<IPasswordHasher>();
         await DbInitializer.SeedAsync(db, hasher);
+        DbInitializer.SeedStatusMessage = "Exito: Base de datos migrada y sembrada correctamente.";
         logger.LogInformation("Base de datos migrada y sembrada correctamente.");
     }
     catch (Exception ex)
     {
+        DbInitializer.SeedStatusMessage = $"Error: {ex.Message} \nStack: {ex.StackTrace}";
         logger.LogError(ex, "Error al migrar/sembrar la base de datos.");
     }
 }
