@@ -67,7 +67,7 @@ public class GetConfiguracionQueryHandler : IRequestHandler<GetConfiguracionQuer
         string seedMsg = "";
         try
         {
-            seedMsg = Horacio.Persistence.Seed.DbInitializer.SeedStatusMessage;
+            seedMsg = DbSeedDiagnostics.SeedStatusMessage;
         }
         catch (Exception ex)
         {
