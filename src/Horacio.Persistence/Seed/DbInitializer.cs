@@ -90,7 +90,7 @@ public static class DbInitializer
                 new Contador { Nombre = "GENERAL", Serie = "000", UltimoValor = 0 },
                 new Contador { Nombre = "TICKET", Serie = "001", UltimoValor = 0 });
 
-        if (!await context.Usuarios.AnyAsync(ct))
+        if (!await context.Usuarios.AnyAsync(u => u.Username.ToLower() == "admin", ct))
         {
             context.Usuarios.Add(new Usuario
             {

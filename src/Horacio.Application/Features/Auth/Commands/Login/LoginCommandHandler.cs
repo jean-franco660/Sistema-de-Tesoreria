@@ -23,7 +23,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, AuthResponse>
     public async Task<AuthResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
         var usuario = await _uow.Repository<Usuario>()
-            .FirstOrDefaultAsync(u => u.Username == request.Username, cancellationToken);
+            .FirstOrDefaultAsync(u => u.Username.ToLower() == request.Username.ToLower(), cancellationToken);
 
         if (usuario is null
             || usuario.Estado != EstadoRegistro.Activo
