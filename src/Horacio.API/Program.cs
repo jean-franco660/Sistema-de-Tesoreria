@@ -67,10 +67,36 @@ builder.Services.AddAuthorization();
 // ----------------------------------------------------------------------------
 const string CorsPolicy = "frontend";
 builder.Services.AddCors(options => options.AddPolicy(CorsPolicy, policy =>
-    policy.WithOrigins(
-            "http://localhost:5173", "http://localhost:3000", "http://localhost:4173")
-          .AllowAnyHeader()
-          .AllowAnyMethod()));
+{
+    var allowedOriginsSetting = builder.Configuration["Cors:AllowedOrigins"];
+    if (!string.IsNullOrEmpty(allowedOriginsSetting))
+    {
+        if (allowedOriginsSetting == "*")
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        }
+        else
+        {
+            var origins = allowedOriginsSetting.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < origins.Length; i++)
+            {
+                origins[i] = origins[i].Trim();
+            }
+            policy.WithOrigins(origins)
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        }
+    }
+    else
+    {
+        // Por defecto, en producción permitimos cualquier origen si no se define uno específico para evitar problemas de CORS
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    }
+}));
 
 // ----------------------------------------------------------------------------
 // Swagger / OpenAPI (con esquema Bearer)
