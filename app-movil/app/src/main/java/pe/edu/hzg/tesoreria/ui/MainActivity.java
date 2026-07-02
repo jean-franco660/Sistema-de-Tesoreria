@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     private String subtitulo(ComprobanteResponse c) {
         String doc = c.tipoDocumento != null ? c.tipoDocumento : "Comprobante";
         if (c.numeroComprobante != null && !c.numeroComprobante.isEmpty()) doc += " " + c.numeroComprobante;
-        String fecha = c.fechaRegistro != null && c.fechaRegistro.length() >= 10 ? c.fechaRegistro.substring(0, 10) : "";
+        String fecha = c.fechaEmision != null && c.fechaEmision.length() >= 10 ? c.fechaEmision.substring(0, 10) : "";
         return fecha.isEmpty() ? doc : doc + " · " + fecha;
     }
 
