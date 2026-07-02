@@ -20,8 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApiClient {
 
-    // ⬇⬇ CAMBIA ESTA URL SEGÚN TU ENTORNO ⬇⬇
-    public static final String BASE_URL = "http://10.0.2.2:5080/";
+    public static final String BASE_URL = "https://refreshing-wisdom-production.up.railway.app/";
 
     private static Retrofit retrofit;
 
